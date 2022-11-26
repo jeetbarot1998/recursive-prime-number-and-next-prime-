@@ -1,4 +1,4 @@
-const number = 13
+const number = 3
 
 function isPrime(n, i, arr) {
 
@@ -9,16 +9,22 @@ function isPrime(n, i, arr) {
             n += 1
             arr.push(isPrime(n, 2, arr))
         }
-        console.log('next prime number is', n)
-        console.log('distance b/w the 2 nos is', n - number)
+        if (arr[0]) {
+            console.log(number, ' is a prime number and')
+        }
+        else{
+            console.log(number, 'is not a prime number and')
+        }
+        console.log('next prime number is and', n)
+        console.log('distance b/w ' + number + ' and ' + n + ' is', n - number)
+        // alert()
         arr.splice(1, 1)
         return arr
 
     }
     // Base cases
     if (n <= 2) {
-        console.log(n, i)
-        return (n == 2) ? true : false;
+        return (n == 2) ? [true] : [false];
     }
     if (n % i == 0) {
         if (arr.length == 0) {
@@ -47,4 +53,11 @@ function isPrime(n, i, arr) {
 
 }
 
-console.log(isPrime(number, 2, []))
+let res = isPrime(number, 2, [])
+if (res.length == 1 && res[0] === true){
+    console.log('2 is a prime number and 3 is the next prime number and')
+    console.log('distance b/w 2 and 3 is 1')
+}
+else if (res.length == 1 && res[0] === false) {
+    console.log(number, ' is not a prime number, 2 is the 1st prime number')
+}
